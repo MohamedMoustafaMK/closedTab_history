@@ -1,11 +1,20 @@
-<!-- popup.html -->
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <title>Off The Record History Mimic</title>
-  <script src="popup.js"></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tab Saver</title>
+  <link rel="stylesheet" href="popup.css">
 </head>
 <body>
-  <button id="saveButton">Save Recent Closed Tabs</button>
+  <div id="tabListContainer">
+    <h2>Open Tabs</h2>
+    <div id="tabList"></div>
+  </div>
+  <div id="recentlyClosedContainer">
+    <h2>Recently Closed Tabs</h2>
+    <div id="recentlyClosedList"></div>
+  </div>
+  <script src="popup.js"></script>
 </body>
 </html>
