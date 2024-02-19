@@ -1,0 +1,31 @@
+{
+  "manifest_version": 2,
+  "name": "Off The Record History Mimic",
+  "version": "1.0",
+  "description": "A Chrome extension to save the history of recent closed tabs in incognito mode.",
+  "permissions": ["storage", "tabs"],
+  "browser_action": {
+    "default_icon": {
+      "16": "images/cross.png",
+      "48": "images/cross.png",
+      "128": "images/cross.png"
+    },
+    "default_title": "Click to save recent closed tabs",
+    "default_popup": "popup.html"
+  },
+  "icons": {
+    "16": "images/cross.png",
+    "48": "images/cross.png",
+    "128": "images/cross.png"
+  },
+  "background": {
+    "scripts": ["background.js"],
+    "persistent": false
+  },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content.js"]
+    }
+  ]
+}
