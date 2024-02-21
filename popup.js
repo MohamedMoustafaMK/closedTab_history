@@ -28,6 +28,17 @@ function openLinkInNewTab(url) {
 	chrome.tabs.create({ url, active: true })
 }
 
+// // Function to handle opening the latest closed tab
+// function openLatestClosedTab(windowId) {
+// 	const recentlyClosedItems = getRecentlyClosedItems(windowId)
+// 	if (recentlyClosedItems.length > 0) {
+// 		const latestClosedTab = recentlyClosedItems.pop() // Get and remove the latest closed tab
+// 		setRecentlyClosedItems(windowId, recentlyClosedItems)
+// 		openLinkInNewTab(latestClosedTab)
+// 		displayOpenTabsForFocusedWindow() // Update the display after opening
+// 	}
+// }
+
 // Function to display open tab URLs for the focused window
 function displayOpenTabsForFocusedWindow() {
 	chrome.windows.getCurrent({ populate: true }, (currentWindow) => {
@@ -86,15 +97,17 @@ function displayOpenTabsForFocusedWindow() {
 		recentlyClosedItems.forEach((url) => {
 			const listItem = document.createElement('li')
 			listItem.textContent = url
-
-			// Make the list item clickable
-			listItem.addEventListener('click', () => {
-				openLinkInNewTab(url)
-			})
-
 			recentlyClosedList.appendChild(listItem)
 		})
 
+		// Create a button to open the latest closed tab
+		// const openButton = document.createElement('button')
+		// openButton.textContent = 'Open Latest Closed Tab'
+		// openButton.addEventListener('click', () => {
+		// 	openLatestClosedTab(windowId)
+		// })
+
+		// recentlyClosedList.appendChild(openButton)
 		listContainer.appendChild(windowList)
 		recentlyClosedContainer.appendChild(recentlyClosedList)
 	})
